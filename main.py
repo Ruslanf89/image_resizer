@@ -18,7 +18,11 @@ def resize_image(input_image, size):
         resized_img = cropped_img.resize((new_width, new_height), resample=Image.LANCZOS)
 
         base, ext = os.path.splitext(input_image)
-        resized_img.save(base + "_resized" + ext, format='PNG')
+        if not base.endswith("_resized"): # Check if images already resized.
+            resized_img.save(base + "_resized" + ext, format='PNG')
+            os.remove(input_image)
+        else:
+            print(f"{base} has already been resized.")
 
 
 input_folder = "Images/Idle/"
