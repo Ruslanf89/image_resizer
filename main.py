@@ -20,8 +20,8 @@ def resize_image(input_image, output_image, size):
         resized_img.save(output_image, format='PNG')
 
 
-input_img = "C:/Users/Dypko/resizer_v01/Images/Idle/0_Dark_Elves_Idle_000.png"
-output_img = "C:/Users/Dypko/resizer_v01/Images/Idle/1.png"
+input_img = "Images/Idle/0_Dark_Elves_Idle_000.png"
+output_img = "Images/Idle/1.png"
 new_size = (75, 75)
 
 resize_image(input_img, output_img, new_size)
