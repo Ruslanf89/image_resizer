@@ -1,7 +1,7 @@
 import os, sys
 from PIL import Image
 
-def resize_image(input_image, output_image, size):
+def resize_image(input_image, size):
 
 
     with Image.open(input_image) as img:
@@ -17,11 +17,14 @@ def resize_image(input_image, output_image, size):
 
         resized_img = cropped_img.resize((new_width, new_height), resample=Image.LANCZOS)
 
-        resized_img.save(output_image, format='PNG')
+        base, ext = os.path.splitext(input_image)
+        resized_img.save(base + "_resized" + ext, format='PNG')
 
 
-input_img = "C:/Users/Dypko/resizer_v01/Images/Idle/0_Dark_Elves_Idle_000.png"
-output_img = "C:/Users/Dypko/resizer_v01/Images/Idle/1.png"
-new_size = (75, 75)
+input_folder = "Images/Idle/"
+new_size = (90, 90)
 
-resize_image(input_img, output_img, new_size)
+for filename in os.listdir(input_folder):
+    if filename.endswith(".png"):
+        input_img = os.path.join(input_folder, filename)
+        resize_image(input_img, new_size)
